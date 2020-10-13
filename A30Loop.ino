@@ -1,13 +1,13 @@
 
 
-
+int time_elapsed = 0;
 void loop() {
-
   readController();
-  drawSnake();
-  readController();
-  moveSnake(snake_direction);
-  readController();
-  delay(delay_ms);
-  readController();
+  if (time_elapsed >= delay_ms ) {
+    moveSnake(snake_direction);
+    drawSnake();
+    time_elapsed = 0;
+  }
+  delay(10);
+  time_elapsed += 10;
 }

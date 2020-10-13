@@ -1,11 +1,11 @@
-unsigned char generateFood() {
-  unsigned char value = random(0x1, 0x9);
-  unsigned char addr = random(0, 8) << 4;
-  unsigned char foodAddr = (random(0, 8) << 4 | random(0x1, 0x9));
+uint8_t generateFood() {
+  uint8_t value = random(0x1, 0x9);
+  uint8_t addr = random(0, 8) << 4;
+  uint8_t foodAddr = (random(0, 8) << 4 | random(0x1, 0x9));
   return isInSnakeBody(foodAddr) ? generateFood() : foodAddr;
 }
 
-bool isInSnakeBody(unsigned char point){
+bool isInSnakeBody(uint8_t point){
   for (int i = 0; (i < 64) && (snake_body[i] > 0x00); i++) {
     if (snake_body[i] == point) {
       return true;
